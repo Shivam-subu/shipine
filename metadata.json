@@ -1,0 +1,6 @@
+{
+  "name": "Shipine | Premium Anti-Tarnish Jewellery",
+  "description": "Timeless, waterproof, anti-tarnish fashion jewellery designed for everyday elegance. Shop earrings, necklaces, bracelets, rings and luxury gift sets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
