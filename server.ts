@@ -2,15 +2,14 @@ import 'dotenv/config';
 import express from 'express';
 import crypto from 'crypto';
 import path from 'path';
-import { createServer as createViteServer } from 'vite';
+import { pathToFileURL } from 'node:url';
 import { INITIAL_PRODUCTS, CATEGORIES, INITIAL_COUPONS, INITIAL_REVIEWS } from './src/data/products.ts';
 import { Product, Order, UserProfile, Coupon, ProductReview } from './src/types/index.ts';
 import { isSupabaseConfigured, SUPABASE_URL } from './src/lib/supabase.ts';
 import { SupabaseService } from './src/services/supabaseService.ts';
 
-const app = express();
-// Uses process.env.PORT in production (Render, Railway, Cloud Run, etc.) and defaults to 3000 in dev
-const PORT = process.env.NODE_ENV === 'production' && process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+export const app = express();
+const PORT = Number(process.env.PORT || 3000);
 
 app.use(express.json());
 
@@ -927,6 +926,7 @@ app.get('/api/admin/subscribers', async (_req, res) => {
    ========================================================================== */
 async function startServer() {
   if (process.env.NODE_ENV !== 'production') {
+    const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: {
         middlewareMode: true,
@@ -952,4 +952,7 @@ async function startServer() {
   });
 }
 
-startServer();
+// Netlify imports the app without starting the local development server.
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+  startServer();
+}
