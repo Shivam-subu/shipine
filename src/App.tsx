@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { StoreProvider, useStore } from './context/StoreContext.tsx';
 import { Header } from './components/Header.tsx';
 import { Footer } from './components/Footer.tsx';
@@ -7,13 +7,14 @@ import { SearchModal } from './components/SearchModal.tsx';
 import { AuthModal } from './components/AuthModal.tsx';
 import { QuickViewModal } from './components/QuickViewModal.tsx';
 import { HomeView } from './views/HomeView.tsx';
-import { ShopView } from './views/ShopView.tsx';
-import { ProductDetailView } from './views/ProductDetailView.tsx';
-import { CheckoutView } from './views/CheckoutView.tsx';
-import { AccountView } from './views/AccountView.tsx';
-import { AdminView } from './views/AdminView.tsx';
-import { StaticPagesView } from './views/StaticPagesView.tsx';
 import { CheckCircle, AlertCircle, Info } from 'lucide-react';
+
+const ShopView = lazy(() => import('./views/ShopView.tsx').then(module => ({ default: module.ShopView })));
+const ProductDetailView = lazy(() => import('./views/ProductDetailView.tsx').then(module => ({ default: module.ProductDetailView })));
+const CheckoutView = lazy(() => import('./views/CheckoutView.tsx').then(module => ({ default: module.CheckoutView })));
+const AccountView = lazy(() => import('./views/AccountView.tsx').then(module => ({ default: module.AccountView })));
+const AdminView = lazy(() => import('./views/AdminView.tsx').then(module => ({ default: module.AdminView })));
+const StaticPagesView = lazy(() => import('./views/StaticPagesView.tsx').then(module => ({ default: module.StaticPagesView })));
 
 const AppContent: React.FC = () => {
   const { activeView, notification } = useStore();
@@ -64,7 +65,9 @@ const AppContent: React.FC = () => {
 
       {/* Dynamic View Routing */}
       <main className="flex-1">
-        {renderActiveView()}
+        <Suspense fallback={<p role="status" className="min-h-[50vh] px-4 py-12 text-center text-sm text-[#777777]">Loading…</p>}>
+          {renderActiveView()}
+        </Suspense>
       </main>
 
       {/* Global Footer */}

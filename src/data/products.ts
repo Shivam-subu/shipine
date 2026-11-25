@@ -1,11 +1,5 @@
 import { Product, ProductCategory, Coupon, ProductReview } from '../types/index.ts';
-
-// High-resolution local generated assets
-export const ASSET_HERO = '/src/assets/images/hero_jewellery_model_1794034444574.jpg';
-export const ASSET_EARRINGS = '/src/assets/images/cat_earrings_showcase_1794034445053.jpg';
-export const ASSET_NECKLACES = '/src/assets/images/cat_necklaces_showcase_1794034445747.jpg';
-export const ASSET_BRACELETS = '/src/assets/images/cat_bracelets_showcase_1794034446075.jpg';
-export const ASSET_CAMPAIGN = '/src/assets/images/campaign_editorial_banner_1794034446542.jpg';
+import { ASSET_HERO, ASSET_EARRINGS, ASSET_NECKLACES, ASSET_BRACELETS, ASSET_CAMPAIGN } from '../lib/images.ts';
 
 export const CATEGORIES: ProductCategory[] = [
   {

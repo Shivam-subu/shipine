@@ -1,4 +1,5 @@
 import React from 'react';
+import { ResponsiveImage } from './ResponsiveImage.tsx';
 import { Product } from '../types/index.ts';
 import { useStore } from '../context/StoreContext.tsx';
 import { Heart, Star, ShoppingBag, Eye } from 'lucide-react';
@@ -28,12 +29,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           className="w-full h-full block focus:outline-none cursor-pointer"
           aria-label={`View ${product.name}`}
         >
-          <img
+          <ResponsiveImage
             src={product.images[0]}
+            sizes="(min-width: 1280px) 290px, (min-width: 1024px) 23vw, (min-width: 768px) 31vw, calc(50vw - 24px)"
             alt={product.name}
             className="w-full h-full object-cover object-center group-hover:scale-104 transition-transform duration-500 ease-out"
             referrerPolicy="no-referrer"
-            loading="lazy"
           />
         </button>
 

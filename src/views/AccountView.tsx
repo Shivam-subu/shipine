@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ResponsiveImage } from '../components/ResponsiveImage.tsx';
 import { useStore } from '../context/StoreContext.tsx';
 import {
   Package,
@@ -391,8 +392,10 @@ export const AccountView: React.FC = () => {
                   <div className="space-y-4">
                     {order.items.map((item, idx) => (
                       <div key={idx} className="flex items-center gap-4">
-                        <img
+                        <ResponsiveImage
                           src={item.imageUrl}
+                          sizes="64px"
+                          thumbnail
                           alt={item.productName}
                           className="w-16 h-16 rounded-xl object-cover border border-[#E8DDCB] bg-[#FAF8F4]"
                         />
@@ -453,7 +456,7 @@ export const AccountView: React.FC = () => {
                       onClick={() => navigateToProduct(p.id)}
                       className="aspect-square rounded-xl overflow-hidden bg-[#FAF8F4] relative cursor-pointer"
                     >
-                      <img src={p.images[0]} alt={p.name} className="w-full h-full object-cover" />
+                      <ResponsiveImage src={p.images[0]} sizes="(min-width: 1152px) 260px, (min-width: 1024px) 24vw, (min-width: 768px) 31vw, calc(50vw - 24px)" alt={p.name} className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <h4

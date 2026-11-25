@@ -1,7 +1,8 @@
 import React from 'react';
 import { useStore } from '../context/StoreContext.tsx';
 import { Sparkles, ArrowRight, ShieldCheck, Droplets } from 'lucide-react';
-import { ASSET_HERO } from '../data/products.ts';
+import { ASSET_HERO, HERO_SIZES } from '../lib/images.ts';
+import { ResponsiveImage } from './ResponsiveImage.tsx';
 
 export const Hero: React.FC = () => {
   const { navigateToCategory, setActiveView } = useStore();
@@ -67,12 +68,14 @@ export const Hero: React.FC = () => {
           <div className="lg:col-span-6 relative">
             <div className="relative mx-auto max-w-lg lg:max-w-none">
               <div className="aspect-[4/3] sm:aspect-[16/11] rounded-2xl overflow-hidden bg-[#E8DDCB] shadow-xl border border-white/50 relative group">
-                <img
+                <ResponsiveImage
                   src={ASSET_HERO}
+                  sizes={HERO_SIZES}
                   alt="Shipine Jewellery Campaign Model wearing 18K Anti-Tarnish Gold Necklaces and Earrings"
                   className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700 ease-out"
                   referrerPolicy="no-referrer"
                   loading="eager"
+                  fetchPriority="high"
                 />
 
                 {/* Subtle soft gradient overlay */}

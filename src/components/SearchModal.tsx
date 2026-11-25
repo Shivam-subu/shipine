@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { ResponsiveImage } from './ResponsiveImage.tsx';
 import { useStore } from '../context/StoreContext.tsx';
 import { Search, X, ArrowRight, Star } from 'lucide-react';
 
@@ -90,8 +91,10 @@ export const SearchModal: React.FC = () => {
                   }}
                   className="w-full text-left flex items-center gap-4 p-2.5 rounded-xl hover:bg-[#FAF8F4] transition-colors group cursor-pointer"
                 >
-                  <img
+                  <ResponsiveImage
                     src={product.images[0]}
+                    sizes="56px"
+                    thumbnail
                     alt={product.name}
                     className="w-14 h-14 rounded-lg object-cover bg-[#FAF8F4] border border-[#E8DDCB]/60 shrink-0"
                     referrerPolicy="no-referrer"

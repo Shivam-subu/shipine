@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ResponsiveImage } from '../components/ResponsiveImage.tsx';
 import { useStore } from '../context/StoreContext.tsx';
 import {
   ShieldCheck,
@@ -235,7 +236,7 @@ export const CheckoutView: React.FC = () => {
               <div className="space-y-3">
                 {confirmedOrder.items.map((item, idx) => (
                   <div key={idx} className="flex items-center gap-3">
-                    <img src={item.imageUrl} alt={item.productName} className="w-12 h-12 rounded-lg object-cover bg-white border border-[#E8DDCB]" />
+                    <ResponsiveImage src={item.imageUrl} sizes="48px" thumbnail alt={item.productName} className="w-12 h-12 rounded-lg object-cover bg-white border border-[#E8DDCB]" />
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-[#242424] truncate">{item.productName}</p>
                       <p className="text-[11px] text-[#777777]">{item.variantName} × {item.quantity}</p>
@@ -644,7 +645,7 @@ Total Paid: ₹${confirmedOrder.total.toLocaleString('en-IN')}
                 <div className="max-h-64 overflow-y-auto space-y-3 pr-1">
                   {cart.map((item) => (
                     <div key={item.id} className="flex items-center gap-3 text-xs">
-                      <img src={item.product.images[0]} alt={item.product.name} className="w-14 h-14 rounded-lg object-cover bg-[#FAF8F4] border border-[#E8DDCB]" />
+                      <ResponsiveImage src={item.product.images[0]} sizes="56px" thumbnail alt={item.product.name} className="w-14 h-14 rounded-lg object-cover bg-[#FAF8F4] border border-[#E8DDCB]" />
                       <div className="flex-1 min-w-0">
                         <p className="font-medium text-[#242424] truncate">{item.product.name}</p>
                         <p className="text-[11px] text-[#777777]">{item.variantName} × {item.quantity}</p>

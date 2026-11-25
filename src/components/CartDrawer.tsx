@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ResponsiveImage } from './ResponsiveImage.tsx';
 import { useStore } from '../context/StoreContext.tsx';
 import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Tag, Sparkles } from 'lucide-react';
 
@@ -130,8 +131,10 @@ export const CartDrawer: React.FC = () => {
                     }}
                     className="w-20 h-20 rounded-lg overflow-hidden bg-[#FAF8F4] shrink-0 border border-[#E8DDCB]/60"
                   >
-                    <img
+                    <ResponsiveImage
                       src={item.product.images[0]}
+                      sizes="80px"
+                      thumbnail
                       alt={item.product.name}
                       className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"

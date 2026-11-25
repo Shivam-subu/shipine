@@ -1,4 +1,5 @@
 import React from 'react';
+import { ResponsiveImage } from './ResponsiveImage.tsx';
 import { useStore } from '../context/StoreContext.tsx';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -31,12 +32,12 @@ export const CategoryShowcase: React.FC = () => {
               className="group text-left flex flex-col focus:outline-none cursor-pointer"
             >
               <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF8F4] border border-[#E8DDCB]/60 shadow-sm transition-all duration-500 group-hover:shadow-md group-hover:-translate-y-1">
-                <img
+                <ResponsiveImage
                   src={category.imageUrl}
+                  sizes="(min-width: 1280px) 224px, (min-width: 1024px) 18vw, (min-width: 768px) 31vw, calc(50vw - 24px)"
                   alt={category.name}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   referrerPolicy="no-referrer"
-                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                 

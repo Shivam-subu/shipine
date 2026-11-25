@@ -1,6 +1,7 @@
 import React from 'react';
+import { ResponsiveImage } from './ResponsiveImage.tsx';
 import { Instagram } from 'lucide-react';
-import { ASSET_HERO, ASSET_EARRINGS, ASSET_NECKLACES, ASSET_BRACELETS, ASSET_CAMPAIGN } from '../data/products.ts';
+import { ASSET_HERO, ASSET_EARRINGS, ASSET_NECKLACES, ASSET_BRACELETS, ASSET_CAMPAIGN } from '../lib/images.ts';
 
 export const InstagramGrid: React.FC = () => {
   const posts = [
@@ -34,12 +35,12 @@ export const InstagramGrid: React.FC = () => {
               key={idx}
               className="relative aspect-square rounded-2xl overflow-hidden group bg-[#FAF8F4] border border-[#E8DDCB]/60 shadow-sm cursor-pointer"
             >
-              <img
+              <ResponsiveImage
                 src={post.image}
+                sizes="(min-width: 1280px) 230px, (min-width: 1024px) 18vw, (min-width: 640px) 31vw, calc(50vw - 22px)"
                 alt={post.caption}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 referrerPolicy="no-referrer"
-                loading="lazy"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-3 text-white text-center">
                 <Instagram className="w-6 h-6 mb-2 text-[#C5A46D]" />
