@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ResponsiveImage } from './ResponsiveImage.tsx';
 import { useStore } from '../context/StoreContext.tsx';
 import { X, Star, ShoppingBag, ShieldCheck, ArrowRight, Droplets, Heart } from 'lucide-react';
 
@@ -49,8 +50,10 @@ export const QuickViewModal: React.FC = () => {
           
           {/* Product Image */}
           <div className="relative aspect-square bg-[#FAF8F4] overflow-hidden">
-            <img
+            <ResponsiveImage
               src={product.images[0]}
+              sizes="(min-width: 768px) 384px, calc(100vw - 32px)"
+              loading="eager"
               alt={product.name}
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"

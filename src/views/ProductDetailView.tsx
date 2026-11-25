@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ResponsiveImage } from '../components/ResponsiveImage.tsx';
 import { useStore } from '../context/StoreContext.tsx';
 import { ProductCard } from '../components/ProductCard.tsx';
 import {
@@ -96,8 +97,11 @@ export const ProductDetailView: React.FC = () => {
               className="relative aspect-square rounded-3xl overflow-hidden bg-white border border-[#E8DDCB]/60 shadow-sm cursor-crosshair group"
               onClick={() => setIsZoomed(!isZoomed)}
             >
-              <img
+              <ResponsiveImage
                 src={product.images[selectedImageIndex] || product.images[0]}
+                sizes="(min-width: 1280px) 584px, (min-width: 1024px) 45vw, calc(100vw - 32px)"
+                loading="eager"
+                fetchPriority="high"
                 alt={product.name}
                 className={`w-full h-full object-cover transition-transform duration-300 ${
                   isZoomed ? 'scale-150' : 'group-hover:scale-105'
@@ -146,7 +150,7 @@ export const ProductDetailView: React.FC = () => {
                       selectedImageIndex === idx ? 'border-[#C5A46D] shadow-sm' : 'border-transparent opacity-70 hover:opacity-100'
                     }`}
                   >
-                    <img src={img} alt={`${product.name} angle ${idx + 1}`} className="w-full h-full object-cover" />
+                    <ResponsiveImage src={img} sizes="80px" thumbnail alt={`${product.name} angle ${idx + 1}`} className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>
@@ -351,7 +355,7 @@ export const ProductDetailView: React.FC = () => {
               
               <div className="flex items-center gap-4">
                 <div className="w-20 h-20 rounded-xl overflow-hidden bg-[#FAF8F4] border border-[#E8DDCB] shrink-0">
-                  <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
+                  <ResponsiveImage src={product.images[0]} sizes="80px" thumbnail alt={product.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="text-xs">
                   <p className="font-semibold text-[#242424]">{product.name}</p>
@@ -363,7 +367,7 @@ export const ProductDetailView: React.FC = () => {
 
               <div className="flex items-center gap-4">
                 <div className="w-20 h-20 rounded-xl overflow-hidden bg-[#FAF8F4] border border-[#E8DDCB] shrink-0">
-                  <img src={bundleProduct.images[0]} alt={bundleProduct.name} className="w-full h-full object-cover" />
+                  <ResponsiveImage src={bundleProduct.images[0]} sizes="80px" thumbnail alt={bundleProduct.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="text-xs">
                   <p className="font-semibold text-[#242424]">{bundleProduct.name}</p>

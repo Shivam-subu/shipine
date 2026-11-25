@@ -60,6 +60,14 @@ A production-ready, full-stack e-commerce web application for **SHIPINE**, a mod
 
 ---
 
+## Image Delivery and Caching
+
+Storefront images in `public/images` use versioned filenames. When replacing a source image, give it a new filename and update `src/lib/images.ts` so browsers do not reuse the immutable cached original. Known legacy catalog URLs still resolve to their moved images. Unrecognized image URLs load directly; to optimize a new external provider, add its specific image host to the Netlify Image CDN allowlist and opt that source into the shared image component.
+
+Netlify applies the long-lived cache policy to versioned images and hashed Vite assets, and the revalidation policy to the shared HTML document. Use Netlify Dev to exercise the actual image transformations; a standalone Vite server falls back to the originals.
+
+---
+
 ## Database Architecture (PostgreSQL / Supabase)
 Full SQL migration files located in `/database/migrations`:
 - `01_init.sql`: Creates 20 tables with primary/foreign keys, indexes, triggers, and Row Level Security (RLS) policies.

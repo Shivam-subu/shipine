@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { ResponsiveImage } from '../components/ResponsiveImage.tsx';
+import { ASSET_EARRINGS } from '../lib/images.ts';
 import { useStore } from '../context/StoreContext.tsx';
 import {
   DollarSign,
@@ -542,7 +544,7 @@ export const AdminView: React.FC = () => {
                     material: '316L Stainless Steel with 18K Gold PVD',
                     dimensions: '20mm',
                     description: '',
-                    images: ['/src/assets/images/cat_earrings_showcase_1794034445053.jpg'],
+                    images: [ASSET_EARRINGS],
                     variants: [{ id: 'v1', name: '18K Gold', colorName: 'Gold', colorHex: '#D4AF37', sku: 'SHP-NEW-1', stock: 50 }],
                     careInstructions: 'Waterproof anti-tarnish.'
                   });
@@ -571,7 +573,7 @@ export const AdminView: React.FC = () => {
                   {products.map((prod) => (
                     <tr key={prod.id} className="hover:bg-[#FAF8F4]/50">
                       <td className="p-3">
-                        <img src={prod.images[0]} alt={prod.name} className="w-10 h-10 rounded-lg object-cover bg-[#FAF8F4]" />
+                        <ResponsiveImage src={prod.images[0]} sizes="40px" thumbnail alt={prod.name} className="w-10 h-10 rounded-lg object-cover bg-[#FAF8F4]" />
                       </td>
                       <td className="p-3">
                         <span className="font-semibold text-[#242424] block">{prod.name}</span>

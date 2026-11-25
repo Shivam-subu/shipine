@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { ResponsiveImage } from '../components/ResponsiveImage.tsx';
 import { useStore } from '../context/StoreContext.tsx';
 import { ShieldCheck, Mail, Phone, MapPin, CheckCircle, ArrowRight, Droplets, Sparkles, Send } from 'lucide-react';
-import { ASSET_HERO, ASSET_CAMPAIGN } from '../data/products.ts';
+import { ASSET_HERO, ASSET_CAMPAIGN } from '../lib/images.ts';
 
 interface StaticPagesProps {
   page: 'about' | 'contact' | 'policies';
@@ -41,7 +42,7 @@ export const StaticPagesView: React.FC<StaticPagesProps> = ({ page }) => {
 
           {/* Hero Banner */}
           <div className="aspect-[16/9] rounded-3xl overflow-hidden shadow-lg border border-[#E8DDCB]">
-            <img src={ASSET_CAMPAIGN} alt="Shipine Craftsmanship" className="w-full h-full object-cover" />
+            <ResponsiveImage src={ASSET_CAMPAIGN} sizes="(min-width: 1024px) 960px, calc(100vw - 32px)" loading="eager" fetchPriority="high" alt="Shipine Craftsmanship" className="w-full h-full object-cover" />
           </div>
 
           {/* The Science of Anti-Tarnish */}

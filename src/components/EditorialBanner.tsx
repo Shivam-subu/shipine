@@ -1,7 +1,8 @@
 import React from 'react';
+import { ResponsiveImage } from './ResponsiveImage.tsx';
 import { useStore } from '../context/StoreContext.tsx';
 import { ArrowRight } from 'lucide-react';
-import { ASSET_CAMPAIGN } from '../data/products.ts';
+import { ASSET_CAMPAIGN } from '../lib/images.ts';
 
 export const EditorialBanner: React.FC = () => {
   const { navigateToCategory } = useStore();
@@ -13,12 +14,12 @@ export const EditorialBanner: React.FC = () => {
           
           {/* Background Photography */}
           <div className="absolute inset-0 z-0">
-            <img
+            <ResponsiveImage
               src={ASSET_CAMPAIGN}
+              sizes="(min-width: 1280px) 1216px, calc(100vw - 32px)"
               alt="Shipine Jewellery Rings & Stackable Bracelets Campaign"
               className="w-full h-full object-cover object-center brightness-75 scale-102"
               referrerPolicy="no-referrer"
-              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
           </div>
